@@ -1,18 +1,21 @@
 #include <iostream>
 using namespace std;
 
-template <typename T>
-T TestFunc(T a){
-    cout<<"maegaebyeonsu a: "<< a << endl;
-    return a;
+namespace TEST{
+    int g_nData = 100;
+    namespace DEV{
+        int g_nData =200;
+        namespace WIN{
+            int g_nData = 300;
+        }
+    }
 }
 
 int main(int argc, char* argv[]) {
 
-    cout<<"int\t" << TestFunc(3)<<endl;
-    cout<<"double\t" << TestFunc(3.3)<<endl;
-    cout<<"char\t" << TestFunc('A')<<endl;
-    cout<<"char*\t" << TestFunc("TestString")<<endl;
+    cout<< TEST::g_nData<<endl;
+    cout<< TEST::DEV::g_nData<<endl;
+    cout<< TEST::DEV::WIN::g_nData<<endl;
 
     return 0;
 }
