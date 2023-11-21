@@ -1,21 +1,27 @@
 #include <iostream>
 using namespace std;
 
+void TestFunc(){cout<<"::TestFunc()"<<endl;}
+
 namespace TEST{
-    int g_nData = 100;
-    namespace DEV{
-        int g_nData =200;
-        namespace WIN{
-            int g_nData = 300;
-        }
+
+    void TestFunc(void){
+        cout<<"TEST::TestFunc()"<<endl;
+    }
+}
+namespace MYDATA{
+
+    void TestFunc(void){
+        cout<<"DATA::TestFunc()"<<endl;
     }
 }
 
 int main(int argc, char* argv[]) {
 
-    cout<< TEST::g_nData<<endl;
-    cout<< TEST::DEV::g_nData<<endl;
-    cout<< TEST::DEV::WIN::g_nData<<endl;
+   TestFunc();
+   ::TestFunc();
+   TEST::TestFunc();
+   MYDATA::TestFunc();
 
     return 0;
 }
