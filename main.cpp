@@ -1,27 +1,21 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
-void TestFunc(){cout<<"::TestFunc()"<<endl;}
+typedef struct USERDATA
+{
+    int nAge;
+    char szName[32];
+    void(*Print)(struct USERDATA *);
+} USERDATA;
 
-namespace TEST{
-
-    void TestFunc(void){
-        cout<<"TEST::TestFunc()"<<endl;
-    }
-}
-namespace MYDATA{
-
-    void TestFunc(void){
-        cout<<"DATA::TestFunc()"<<endl;
-    }
+void PrintData(USERDATA *pUser)
+{
+    printf("%d, %s\n",pUser->nAge,pUser->szName);
 }
 
-int main(int argc, char* argv[]) {
-
-   TestFunc();
-   ::TestFunc();
-   TEST::TestFunc();
-   MYDATA::TestFunc();
+int main(void)
+{
+    USERDATA user = {20,"chulsu",PrintData};
+    user.Print(&user);
 
     return 0;
 }
