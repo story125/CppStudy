@@ -1,21 +1,41 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-typedef struct USERDATA
+void initializeValue(int **starNum,int ROW,int COLS)
 {
-    int nAge;
-    char szName[32];
-    void(*Print)(struct USERDATA *);
-} USERDATA;
+    for(int i=0;i<ROW;i++){
+        for(int j=0;j<COLS;j++){
+            starNum[i][j] = 0;
+        }
 
-void PrintData(USERDATA *pUser)
-{
-    printf("%d, %s\n",pUser->nAge,pUser->szName);
+    }
 }
 
 int main(void)
 {
-    USERDATA user = {20,"chulsu",PrintData};
-    user.Print(&user);
+    int input;
+    cout<< "Insert Number:";
+    cin>>input;
+    int **starNum = new int*[input];
+    for(int i=0;i<input;i++){
+        starNum[i] = new int[input];
+    }
+    initializeValue(starNum,input,input);
+    for(int i=0;i<input;i++){
+        for(int j=0;j<input;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
 
+
+
+    for(int i=0;i<input;i++){
+        delete[] starNum[i];
+    }
+    delete[] starNum;
     return 0;
+
 }
+
+
