@@ -21,14 +21,6 @@ int main(void)
         starNum[i] = new int[input];
     }
     initializeValue(starNum,input,input);
-    for(int i=0;i<input;i++){
-        for(int j=0;j<input;j++){
-            cout<<"*";
-        }
-        cout<<endl;
-    }
-
-
 
     for(int i=0;i<input;i++){
         delete[] starNum[i];
